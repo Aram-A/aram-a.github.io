@@ -27,7 +27,7 @@ function init() {
                 '<i class="delete"></i>',
                 '</li>',
             ].join(''));
-            //    input.value = "";
+            input.value = "";
             console.log(taskLists);
         }
     });
