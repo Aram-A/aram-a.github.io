@@ -28,16 +28,22 @@
         (cols[0].matches('.tic') && cols[1].matches('.tic') && cols[2].matches('.tic') ||
             cols[3].matches('.tic') && cols[4].matches('.tic') && cols[5].matches('.tic') ||
             cols[6].matches('.tic') && cols[7].matches('.tic') && cols[8].matches('.tic') ||
+            cols[0].matches('.tic') && cols[3].matches('.tic') && cols[6].matches('.tic') ||
+            cols[1].matches('.tic') && cols[4].matches('.tic') && cols[7].matches('.tic') ||
+            cols[2].matches('.tic') && cols[5].matches('.tic') && cols[8].matches('.tic') ||
             cols[0].matches('.tic') && cols[4].matches('.tic') && cols[8].matches('.tic') ||
-            cols[2].matches('.tic') && cols[4].matches('.tic') && cols[8].matches('.tic')) {
+            cols[2].matches('.tic') && cols[4].matches('.tic') && cols[6].matches('.tic')) {
             winnerText.innerHTML = 'Победили крестики!';
             winner.classList.add('active');
         } else if
         (cols[0].matches('.tac') && cols[1].matches('.tac') && cols[2].matches('.tac') ||
             cols[3].matches('.tac') && cols[4].matches('.tac') && cols[5].matches('.tac') ||
             cols[6].matches('.tac') && cols[7].matches('.tac') && cols[8].matches('.tac') ||
+            cols[0].matches('.tac') && cols[3].matches('.tac') && cols[6].matches('.tac') ||
+            cols[1].matches('.tac') && cols[4].matches('.tac') && cols[7].matches('.tac') ||
+            cols[2].matches('.tac') && cols[5].matches('.tac') && cols[8].matches('.tac') ||
             cols[0].matches('.tac') && cols[4].matches('.tac') && cols[8].matches('.tac') ||
-            cols[2].matches('.tic') && cols[4].matches('.tic') && cols[8].matches('.tic')) {
+            cols[2].matches('.tac') && cols[4].matches('.tac') && cols[6].matches('.tac')) {
             winnerText.innerHTML = 'Победили нолики!';
             winner.classList.add('active');
         } else if (step == 9) {
