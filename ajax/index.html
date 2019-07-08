@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <ul class="post-list"></ul>
+</div>
+
+<script>
+    var posts = [];
+    var postList = document.querySelectorAll('.post-list');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (this.readyState != 4) return;
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        } else {
+            posts = JSON.parse(xhr.responseText);
+            posts.forEach(function (el, i) {
+                postList[0].innerHTML += `
+                <li>
+                    <h2>${el.title}</h2>
+                    <div class="description"></div>
+                    <button class="more" data-id="${el.id}">Подробнее</button>
+                </li>`
+            });
+        }
+    };
+
+    postList[0].addEventListener('click', function (e) {
+        var elem = e.target;
+        var postHTML = elem.previousElementSibling;
+        var postDesc = [];
+        if (elem.matches('.more')) {
+            var elId = elem.dataset.id;
+            var xhrDesc = new XMLHttpRequest();
+            xhrDesc.open('GET', 'http://jsonplaceholder.typicode.com/posts/' + elId);
+            xhrDesc.send();
+            xhrDesc.onreadystatechange = function () {
+                if (xhrDesc.readyState != 4) return;
+                if (xhrDesc.status != 200) {
+                    alert(xhrDesc.status + ': ' + xhrDesc.statusText);
+                } else {
+                    postDesc = JSON.parse(xhrDesc.responseText);
+                    posts.forEach(function (el, i) {
+                        if (elId == i + 1) {
+                            postHTML.innerHTML = postDesc.body;
+                            elem.remove();
+                        }
+                    });
+
+                }
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>
