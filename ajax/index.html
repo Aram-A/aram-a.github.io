@@ -40,7 +40,7 @@
         if (elem.matches('.more')) {
             var elId = elem.dataset.id;
             var xhrDesc = new XMLHttpRequest();
-            xhrDesc.open('GET', 'http://jsonplaceholder.typicode.com/posts/' + elId);
+            xhrDesc.open('GET', 'https://jsonplaceholder.typicode.com/posts/' + elId);
             xhrDesc.send();
             xhrDesc.onreadystatechange = function () {
                 if (xhrDesc.readyState != 4) return;
